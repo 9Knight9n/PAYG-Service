@@ -24,14 +24,11 @@ class APILoggerMiddleware:
         if response.status_code not in self.LOGGER_ALLOWED_STATUS_CODES:
             return response
 
-        api = request.path
-        method = request.method
         date = datetime.now()
-
         obj, _ = Record.objects.get_or_create(
             user=User.objects.get(user=request.user),
-            api=api,
-            method=method,
+            api=request.path,
+            method=request.method,
             month=date.month,
             year=date.year,
         )
