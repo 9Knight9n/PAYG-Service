@@ -2,6 +2,7 @@ from django.core.validators import MinValueValidator
 from django.db import models
 import uuid
 from django.contrib.auth.models import User as DjangoUser
+from django.db.models import F
 
 
 class User(models.Model):
@@ -11,3 +12,7 @@ class User(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    def increase_count(self, new_cost):
+        self.total_cost = F('total_cost') + new_cost
+        self.save()

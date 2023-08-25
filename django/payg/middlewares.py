@@ -1,7 +1,7 @@
 from datetime import datetime
 from django.urls import resolve
 from authentication.models import User
-from payg.config import LOGGER_ALLOWED_NAMESPACES, LOGGER_ALLOWED_STATUS_CODES
+from payg.config import LOGGER_ALLOWED_NAMESPACES, LOGGER_ALLOWED_STATUS_CODES, API_COST
 from payg.models import Record
 
 
@@ -25,12 +25,15 @@ class APILoggerMiddleware:
             return response
 
         date = datetime.now()
+        user = User.objects.get(user=request.user)
+        api = request.path
         obj, _ = Record.objects.get_or_create(
-            user=User.objects.get(user=request.user),
-            api=request.path,
+            user=user,
+            api=api,
             method=request.method,
             month=date.month,
             year=date.year,
         )
         obj.increase_count()
+        user.increase_count(API_COST[api])
         return response
