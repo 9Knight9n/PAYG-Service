@@ -1,108 +1,12 @@
 {
 	"info": {
-		"_postman_id": "25dc4c0a-da76-487f-9ad0-997ca52954ad",
-		"name": "payg_auth",
+		"_postman_id": "8511698b-10db-483f-aa90-1e2aaa812075",
+		"name": "payg_random_api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "register",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "username",
-							"value": "sajad",
-							"type": "default"
-						},
-						{
-							"key": "password",
-							"value": "Abcd1234!",
-							"type": "default"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{server_ip}}/api/auth/register/",
-					"host": [
-						"{{server_ip}}"
-					],
-					"path": [
-						"api",
-						"auth",
-						"register",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "login",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "username",
-							"value": "sajad",
-							"type": "default"
-						},
-						{
-							"key": "password",
-							"value": "Abcd1234!",
-							"type": "default"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{server_ip}}/api/auth/login/",
-					"host": [
-						"{{server_ip}}"
-					],
-					"path": [
-						"api",
-						"auth",
-						"login",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "logout",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "token {{token}}",
-						"type": "default"
-					}
-				],
-				"url": {
-					"raw": "{{server_ip}}/api/auth/logout/",
-					"host": [
-						"{{server_ip}}"
-					],
-					"path": [
-						"api",
-						"auth",
-						"logout",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "user info",
+			"name": "API 1",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -113,14 +17,72 @@
 					}
 				],
 				"url": {
-					"raw": "{{server_ip}}/api/auth/info/",
+					"raw": "{{server_ip}}/api/payg/api1/?arg1=555",
 					"host": [
 						"{{server_ip}}"
 					],
 					"path": [
 						"api",
-						"auth",
-						"info",
+						"payg",
+						"api1",
+						""
+					],
+					"query": [
+						{
+							"key": "arg1",
+							"value": "555"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API 2",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "token {{token}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{server_ip}}/api/payg/api2/",
+					"host": [
+						"{{server_ip}}"
+					],
+					"path": [
+						"api",
+						"payg",
+						"api2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API 3",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "token {{token}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{server_ip}}/api/payg/api3/",
+					"host": [
+						"{{server_ip}}"
+					],
+					"path": [
+						"api",
+						"payg",
+						"api3",
 						""
 					]
 				}
