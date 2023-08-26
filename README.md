@@ -12,7 +12,7 @@ Backend development is the main focus in this project, so there is almost no fie
 * Docker version 20.10 or higher (lower might also work)
 * Docker compose version 2.15 or higher (lower might also work)
 <br/>
-<br/>
+
 I strongly suggest to use docker as it would make tasks like superuser creation, migrations, database connections and many more automated. The whole setup process would take less than a couple of minutes if you have a decent internet connection.
 
 ### Preparing
