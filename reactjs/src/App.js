@@ -15,9 +15,6 @@ import Home from "./pages/home/Home";
 
 function App() {
   const [token, setToken] = useState(null);
-  const [id, setId] = useState(null);
-  const [username, setUsername] = useState(null);
-  const [credit, setCredit] = useState(0);
   const [api, contextHolder] = notification.useNotification();
 
     // useEffect(() => {
@@ -33,14 +30,13 @@ function App() {
           <Routes>
               <Route index element={
                   <RequireAuth token={token}>
-                      <Home notif={api} token={token} id={id} username={username} credit={credit}/>
+                      <Home notif={api} token={token}/>
                   </RequireAuth>
               }/>
               <Route path="/login" element={<Login notif={api}
-                  setUsername={setUsername} setToken={setToken}
-                  setId={setId} setCredit={setCredit}/>}
+                  setToken={setToken}/>}
               />
-              <Route path="/register" element={<Register notif={api} setToken={setToken}/>}/>
+              <Route path="/register" element={<Register notif={api}/>}/>
               <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
       </div>
