@@ -58,7 +58,7 @@ REST_FRAMEWORK = {
 
 REST_KNOX = {
     # set tokens not to expire at all
-    # to make it easier to handle it in frontend
+    # to make it easier to handle things in frontend
     'TOKEN_TTL': None,
     'TOKEN_LIMIT_PER_USER': 1,
 }
@@ -102,7 +102,6 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
@@ -111,6 +110,10 @@ DATABASES = {
         "PASSWORD": os.getenv("POSTGRES_PASSWORD", None),
         "HOST": os.getenv("POSTGRES_HOST", None),
         "PORT": os.getenv("POSTGRES_PORT", None),
+    } if os.getenv("POSTGRES_HOST", None) is not None else
+    {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
     }
 }
 
