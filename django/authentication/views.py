@@ -41,5 +41,5 @@ class UserView(APIView):
             'id': user.id,
             'username': str(user),
             'monthly_cost': calculate_user_cost_current_month(user),
-            'total_cost': user.total_cost,
+            'total_cost': round(user.total_cost, 3),
         })

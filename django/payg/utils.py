@@ -5,10 +5,10 @@ from payg.models import Record
 
 
 def calculate_user_cost_per_month(user: User, year: int, month: int):
-    return sum([
+    return round(sum([
         API_COST[item['api']] * item['count'] for item in
         list(Record.objects.filter(user=user, year=year, month=month).values('api', 'count'))
-    ])
+    ]), 3)
 
 
 def calculate_user_cost_current_month(user: User):
